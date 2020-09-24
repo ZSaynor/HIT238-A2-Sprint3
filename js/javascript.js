@@ -46,3 +46,13 @@ function checkboxScan() {
 	}
 	document.getElementsByClassName("ingredientMsg")[0].innerHTML = "You have all the ingredients"
 }
+
+
+document.querySelector('.favBtn').addEventListener('click', function(fav) {
+	// get favorites from local storage or empty array
+	var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+	
+	var favID = fav.target.name
+	
+	console.log(favID)
+});
