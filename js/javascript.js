@@ -51,7 +51,7 @@ function checkboxScan() {
 
 
 // Changes the image source of the favourite star based on whether recipe is favourited
-window.onload = function() {
+function favCheck() {
 	// get favorites from local storage or empty array
 	var favourites = JSON.parse(localStorage.getItem('favourites')) || [];
 	
@@ -79,7 +79,7 @@ window.onload = function() {
 
 // Used to add strings representing favourite recipes to local storage
 document.querySelector('.favBtn').addEventListener('click', function(fav) {
-	
+
 	// get favorites from local storage or empty array
 	var favourites = JSON.parse(localStorage.getItem('favourites')) || [];
 	
