@@ -110,3 +110,14 @@ document.querySelector('.favBtn').addEventListener('click', function(fav) {
 	
 	console.log(favourites);
 });
+
+
+/*
+//function for displaying favourites
+function favDisplay() {
+	// get favorites from local storage or empty array
+	var favourites = JSON.parse(localStorage.getItem('favourites')) || [];
+		
+	
+};
+*/
