@@ -50,9 +50,24 @@ function checkboxScan() {
 
 document.querySelector('.favBtn').addEventListener('click', function(fav) {
 	// get favorites from local storage or empty array
-	var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+	var favourites = JSON.parse(localStorage.getItem('favourites')) || [];
 	
+	// sets favID to name of fav button
 	var favID = fav.target.name
 	
-	console.log(favID)
+	// finds index of favID
+	var favIndex = favourites.indexOf(favID)
+
+	// if favID in favourites array then gets removed, else gets added to favourites array
+	if(favIndex !== -1) {
+		favourites.splice(favIndex, 1)
+	} else {
+		favourites.push(favID)
+	}
+	
+	
+	// sets favourites array into localStorage
+	localStorage.setItem('favourites', JSON.stringify(favourites));
+	
+	console.log(favourites)
 });
