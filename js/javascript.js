@@ -35,6 +35,31 @@ function searchRecipe() {
     }
 }
 
+//searchbar functionality for fav list page, same as searchBar but runs favDisplay() at the end
+function searchRecipe2() {
+    var input, filter, found, table, tr, td, i, j;
+    input = document.getElementById("searchBar");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("recipeTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td");
+        for (j = 1; j < td.length; j++) {
+            if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                found = true;
+            }
+        }
+        if (found) {
+            tr[i].style.display = "";
+            found = false;
+        } else {
+            tr[i].style.display = "none";
+        }
+    }
+	favDisplay();
+}
+
+
 //Used in ingredient checkbox on recipe detail page
 function checkboxScan() {
 	var boxes = document.getElementsByName('ingcheck');
@@ -140,10 +165,6 @@ function favDisplay() {
 		
 		// checks if the favourites contains a string equal to the name of a tr
 		if(favourites.includes(tableListNames[i])) {
-			
-			// displays tr if name in favourites
-			tr[i].style.display = "";
-			
 		} else {
 			// hides tr if name not in favourites
 			tr[i].style.display = "none";
