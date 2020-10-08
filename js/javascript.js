@@ -117,15 +117,42 @@ try {
 
 
 
-/*
-//function for displaying favourites
+
+//function for displaying favourites only on favlist page
 function favDisplay() {
 	// get favorites from local storage or empty array
 	var favourites = JSON.parse(localStorage.getItem('favourites')) || [];
+	
+	// gets basic variables for table and tr elements
+	var table = document.getElementById("recipeTable");
+	var tr = table.getElementsByTagName("tr");
+	
+	// array used for names of each tr element
+	var tableListNames = [];
+	
+	// gets all names of tr elements and adds to tableListNames array
+	for (i = 0; i < tr.length; i++) {
+		tableListNames.push(tr[i].getAttribute("name"));
+	}
+	
+	// for loop through entire tableListNames array
+	for (i = 0; i < tableListNames.length; i++) {
 		
+		// checks if the favourites contains a string equal to the name of a tr
+		if(favourites.includes(tableListNames[i])) {
+			
+			// displays tr if name in favourites
+			tr[i].style.display = "";
+			
+		} else {
+			// hides tr if name not in favourites
+			tr[i].style.display = "none";
+		}
+	}
+
 	
 };
-*/
+
 
 function previousPage() {
 	window.history.go(-1);
